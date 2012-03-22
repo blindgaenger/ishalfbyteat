@@ -34,6 +34,10 @@ get '/' do
   haml :index
 end
 
+get '/here/:venue_id/:user_id' do
+  here_now?(params[:venue_id], params[:user_id]) ? 'YEP' : 'NOPE'
+end
+
 get '/stylesheets/:file.css' do
   sass "stylesheets/#{params[:file]}".to_sym
 end
