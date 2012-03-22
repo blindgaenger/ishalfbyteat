@@ -4,6 +4,7 @@ gem 'sinatra'
 gem 'sinatra-contrib'
 gem 'haml'
 gem 'sass'
+gem 'foursquare2'
 
 group :development do
   gem 'rake'

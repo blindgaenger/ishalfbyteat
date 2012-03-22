@@ -11,5 +11,8 @@
 
       // just for fun
       %svg(xmlns='http://www.w3.org/2000/svg' width='400' height='400')
-        %circle(cx='200' cy='200' r='50' style='fill:red')
+        - if @here
+          %circle(cx='200' cy='200' r='50' style='fill:green')
+        - else
+          %circle(cx='200' cy='200' r='50' style='fill:red')
         %image(xlink:href='images/icon.svg' x='0' y='0' width='400' height='400')

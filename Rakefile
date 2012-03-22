@@ -5,5 +5,5 @@ end
 
 desc 'deploys to heroku'
 task :deploy do
-  system 'git push heroku master'
+  system 'git push heroku master && heroku config:push'
 end
