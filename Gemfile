@@ -9,5 +9,6 @@ gem 'foursquare2'
 group :development do
   gem 'rake'
   gem 'foreman'
+  gem 'heroku'
   gem 'sinatra-reloader'
 end
