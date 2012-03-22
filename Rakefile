@@ -1,6 +1,6 @@
 desc 'starts a development server'
 task :server do
-  system 'foreman start'
+  system 'foreman start --port 3000'
 end
 
 desc 'deploys to heroku'
