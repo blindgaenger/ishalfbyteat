@@ -15,7 +15,7 @@ configure do
 end
 
 helpers do
-  def here_now?(venue_id, user_id)
+  def here_now?(user_id, venue_id)
     venue = $foursquare.venue(venue_id)
     return nil unless venue
 
@@ -30,12 +30,17 @@ helpers do
 end
 
 get '/' do
-  @here = here_now?(ENV['FOURSQUARE_VENUE_ID'], ENV['FOURSQUARE_USER_ID'])
+  @here = here_now?(ENV['FOURSQUARE_USER_ID'], ENV['FOURSQUARE_VENUE_ID'])
   haml :index
 end
 
-get '/here/:venue_id/:user_id' do
-  here_now?(params[:venue_id], params[:user_id]) ? 'YEP' : 'NOPE'
+get '/test/:user_id/:venue_id' do
+  user_id = params[:user_id]
+  venue_id = params[:venue_id]
+  @user_name = (user = $foursquare.user(user_id)) && [user.firstName, user.lastName].compact.join(' ')
+  @venue_name = $foursquare.venue(venue_id).try(:name)
+  @here = here_now?(user_id, venue_id)
+  haml :test
 end
 
 get '/stylesheets/:file.css' do
