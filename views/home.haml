@@ -2,6 +2,6 @@
 
 %a(href='/mindmatters') Is he at mindmatters?
 
-%form(action='/' method='get')
-  %input(type='text' name='venue' value='' placeholder='Where could he be?')
-  %input(type='submit' value='Find')
+%form.form-search(action='/' method='get')
+  %input.input-medium.search-query(type='text' name='venue' value='' placeholder='Where could he be?')
+  %button.btn(type='submit') Find

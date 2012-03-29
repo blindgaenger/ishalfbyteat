@@ -3,7 +3,10 @@
   %head
     %meta(charset='utf-8')
     %title ishalfbyte.at
+    %link(rel='stylesheet' href='/bootstrap/css/bootstrap.min.css')
     %link(rel='stylesheet' href='/stylesheets/style.css')
   %body
-    #container
+    .container
       = yield
+    %script(type='text/javascript' src='//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js')
+    %script(type='text/javascript' src='/bootstrap/js/bootstrap.min.js')
