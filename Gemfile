@@ -11,4 +11,5 @@ group :development do
   gem 'foreman'
   gem 'heroku'
   gem 'sinatra-reloader'
+  gem 'oauth2'
 end
