@@ -35,6 +35,10 @@ helpers do
   end
 end
 
+get '/stylesheets/:file.css' do
+  sass "stylesheets/#{params[:file]}".to_sym
+end
+
 get '/' do
   if venue = params[:venue]
     redirect to("/#{URI.encode venue}")
@@ -53,17 +57,4 @@ get '/:venue' do
   else
     haml :venue_unknown
   end
-end
-
-get '/test/:user_id/:venue_id' do
-  user_id = params[:user_id]
-  venue_id = params[:venue_id]
-  @user_name = (user = $foursquare.user(user_id)) && [user.firstName, user.lastName].compact.join(' ')
-  @venue_name = $foursquare.venue(venue_id).try(:name)
-  @here = here_now?(user_id, venue_id)
-  haml :test
-end
-
-get '/stylesheets/:file.css' do
-  sass "stylesheets/#{params[:file]}".to_sym
 end
