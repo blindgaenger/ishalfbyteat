@@ -15,7 +15,11 @@ configure do
 end
 
 helpers do
-  # checking the user where he is right now
+  def is_friend?(user_id)
+    $foursquare.user_friends('self')['items'].map{|u| u.id}.include? user_id
+  end
+
+  # checking where the user is right now
   # may result in multiple venues at the same time
   def here_now?(user_id, venue_id)
     venue = $foursquare.venue(venue_id)
@@ -34,6 +38,8 @@ end
 get '/' do
   if venue = params[:venue]
     redirect to("/#{URI.encode venue}")
+  elsif !is_friend?(ENV['FOURSQUARE_USER_ID'])
+    haml :start
   else
     haml :home
   end
