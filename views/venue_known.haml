@@ -1,6 +1,9 @@
-%h1= @venue
-
-- if @here
-  %p Yep, found him!
-- else
-  %p Nope, not here!
+.hero-unit
+  - if @here
+    %h1= "#{@venue}: Yep, found him!"
+    %p Yay!
+  - else
+    %h1= "#{@venue}: Nope, not here."
+    %p
+      Maybe
+      %a(href="http://twitter.com/halfbyte") nudge him to come by?
